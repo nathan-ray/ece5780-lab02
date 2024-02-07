@@ -127,6 +127,7 @@ int main(void)
 	
 	// enable and prioritize EXTI
 	NVIC_EnableIRQ(5);
+	NVIC_SetPriority(-1, 0);
 	NVIC_SetPriority(5, 1);
 	
 	while (1) {
