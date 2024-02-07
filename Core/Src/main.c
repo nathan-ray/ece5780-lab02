@@ -55,14 +55,26 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
+volatile int delay_loop = 0;
 
 void EXTI0_1_IRQHandler() {
-	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);
 	
+	// first toggle
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);	
+	
+	while (delay_loop != 1500000) {
+		delay_loop += 1;
+	}
+	
+	// second toggle
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);		
+		
 	// clearing pending register
 	EXTI->PR |= (1 << 0);
 	
-	
+	// reset delay loop
+	delay_loop = 0;
+
 }
 	
 /**
