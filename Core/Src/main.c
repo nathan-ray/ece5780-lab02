@@ -127,7 +127,11 @@ int main(void)
 	
 	// enable and prioritize EXTI
 	NVIC_EnableIRQ(5);
-	NVIC_SetPriority(5, 1);
+	NVIC_SetPriority(5, 3);
+	
+	// medium priority for SysTick
+	// NVIC_EnableIRQ(-1);
+	NVIC_SetPriority(-1, 2);
 	
 	while (1) {
 		HAL_Delay(400); // Delay 400ms
