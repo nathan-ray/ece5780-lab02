@@ -1,4 +1,4 @@
-/* USER CODE BEGIN Header */
+/* Nathaniel Ray Raharjo - u1360092 */
 /**
   ******************************************************************************
   * @file           : main.c
@@ -19,32 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
-
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
-
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
@@ -57,6 +31,11 @@ void SystemClock_Config(void);
 /* USER CODE END 0 */
 volatile int delay_loop = 0;
 
+/**
+	*	EXTI0 Interrupt Handler which toggles the LEDs
+	* with a delay.
+	*
+	*/
 void EXTI0_1_IRQHandler() {
 	
 	// first toggle
@@ -130,7 +109,6 @@ int main(void)
 	NVIC_SetPriority(5, 3);
 	
 	// medium priority for SysTick
-	// NVIC_EnableIRQ(-1);
 	NVIC_SetPriority(-1, 2);
 	
 	while (1) {
